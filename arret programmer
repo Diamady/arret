@@ -1,0 +1,35 @@
+echo off
+cls
+color 0b
+title ARRET PROGRAMMER
+echo **************************************************************
+echo ******************* ARRET PROGRAMMER *************************
+echo **************************************************************
+echo.
+echo DANS COMBIEN DE TEMPS VOULEZ VOUS QUE VOTRE PC S ETEIGNE
+set /p H=HEURS : 
+set /p M=MINUTES : 
+set /p S=SECONDES : 
+set /a t1 = %H% * 60 * 60
+set /a t2 =%M%*60 
+set /a a=%t1%+%t2%+%S%
+set /a R=%a%
+shutdown /s /t %R% 
+pause
+:recom
+if (%S%==0 ) goto : p   
+if (%M%==0 ) goto :o
+:p
+set /a S=59
+set /a M=M-1
+goto recom
+:o
+set /a M=59
+set /a H=H-1
+goto recom
+echo *********************
+echo ARRET DANS %H%:%M%:%S%
+echo ********************* 
+set /a S = S-1
+goto recom
+pause
